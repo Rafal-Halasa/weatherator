@@ -24,7 +24,7 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.showDetailViewEvent.observe(
             viewLifecycleOwner,
-            Observer { findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment()) })
+            Observer { findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(it)) })
         return binding.root
     }
 
