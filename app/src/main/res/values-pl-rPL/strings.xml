@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">weatherator</string>
+    <string name="desc">Opis</string>
+    <string name="city">Miasto</string>
+    <string name="find">Znajdź</string>
+</resources>

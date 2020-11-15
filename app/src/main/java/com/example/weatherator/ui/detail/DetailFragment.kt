@@ -33,12 +33,12 @@ class DetailFragment : Fragment() {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-//        viewModel.imgWeatherUrl.observe(
-//            viewLifecycleOwner,
-//            Observer {
-//                val test = it
-//                Glide.with(this).load(it).into(binding.icWether)
-//            })
+        viewModel.imgWeatherUrl.observe(
+            viewLifecycleOwner,
+            Observer {
+                val test = it
+                Glide.with(this).load(it).into(binding.icWether)
+            })
         return binding.root
     }
 

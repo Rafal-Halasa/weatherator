@@ -18,6 +18,9 @@
         android:label="DetailFragment" >
         <argument
             android:name="cityId"
-            app:argType="integer" />
+            app:argType="string" />
+        <argument
+            android:name="LocalizedName"
+            app:argType="string" />
     </fragment>
 </navigation>

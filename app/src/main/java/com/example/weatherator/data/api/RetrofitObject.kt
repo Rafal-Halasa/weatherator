@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitObject {
     private const val BASE_URL = "http://dataservice.accuweather.com/"
-    const val BASE_ICON_URL = "http://openweathermap.org/img/wn/"
+    const val BASE_ICON_URL = "https://developer.accuweather.com/sites/default/files/"
     private val retrofit
         get() = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

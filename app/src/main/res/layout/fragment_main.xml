@@ -29,8 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="City"
-                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityTextChanged(text)}"
+                android:hint="@string/city"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,19 +39,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{()->viewModel.onFindCityClick(editText.getText().toString())}"
-                android:text="znajdz"
+                android:text="@string/find"
                 app:layout_constraintTop_toBottomOf="@id/editText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvContacts"
-            set_adapter_value="@{viewModel.cities}"
+            adapter_value="@{viewModel.cities}"
+            listener="@{viewModel.itemListener}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

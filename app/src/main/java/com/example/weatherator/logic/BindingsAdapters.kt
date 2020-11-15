@@ -1,5 +1,6 @@
 package com.example.weatherator.logic
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -7,6 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherator.data.models.cities.CitiesModel
+import com.example.weatherator.ui.main.ItemListener
 import com.example.weatherator.ui.main.views.CitiesListAdapter
 
 
@@ -14,13 +16,20 @@ object BindingsAdapters {
     @BindingAdapter(value = ["text_color"])
     @JvmStatic
     fun setTextColor(view: TextView, color: Int) {
-        view.context?.let { ContextCompat.getColor(it, color) }?.let { view.setTextColor(it) }
+        if (color != 0) {
+            view.context?.let { ContextCompat.getColor(it, color) }?.let { view.setTextColor(it) }
+        }
     }
 
     @BindingAdapter(value = ["tint_color"])
     @JvmStatic
     fun setImageTintColor(view: ImageView, color: Int) {
-        view.context?.let { ContextCompat.getColor(it, color) }?.let { view.setColorFilter(it) }
+        if (color == 0) {
+            view.visibility = View.GONE
+        } else {
+            view.visibility = View.VISIBLE
+            view.context?.let { ContextCompat.getColor(it, color) }?.let { view.setColorFilter(it) }
+        }
     }
 
     @BindingAdapter(value = ["set_adapter"])
@@ -33,14 +42,15 @@ object BindingsAdapters {
         view.layoutManager = LinearLayoutManager(view.context)
     }
 
-    @BindingAdapter(value = ["set_adapter_value"])
+    @BindingAdapter(value = ["adapter_value", "listener"], requireAll = false)
     @JvmStatic
     fun setImageTin(
         view: RecyclerView,
-        cities: CitiesModel
+        cities: CitiesModel,
+        listener: ItemListener
     ) {
         if (view.adapter == null) {
-            view.adapter = CitiesListAdapter(CitiesModel())
+            view.adapter = CitiesListAdapter(CitiesModel(), listener)
             view.layoutManager = LinearLayoutManager(view.context)
         }
         val citiesListAdapter = view.adapter as CitiesListAdapter
