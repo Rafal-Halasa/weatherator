@@ -4,4 +4,7 @@
     <string name="desc">Opis</string>
     <string name="city">Miasto</string>
     <string name="find">Znajdź</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="to">do</string>
 </resources>
