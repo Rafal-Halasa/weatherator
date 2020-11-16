@@ -1,7 +1,7 @@
 package com.example.weatherator.ui.base
 
 class Keys {
-    companion object{
-        const val APi_KEY="yPixSuA4gIeEQIaEqUjE4JDwlKzFtvJ7"
+    companion object {
+        const val APi_KEY = "frXSRLvfHZgzUNGejtlsyJGY6hMRR1YZ"
     }
 }
