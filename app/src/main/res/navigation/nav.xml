@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav"
-    app:startDestination="@id/mainFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav"
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.weatherator.ui.main.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -15,12 +16,23 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.weatherator.ui.detail.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <argument
             android:name="cityId"
             app:argType="string" />
         <argument
             android:name="LocalizedName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.weatherator.ui.splash_screan.SplashScreenFragment"
+        android:label="SplashScreenFragment">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
