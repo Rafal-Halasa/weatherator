@@ -6,6 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
+    flavorDimensions "mode"
     buildFeatures {
         dataBinding true
     }
@@ -31,6 +32,34 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "Weatherator"
+
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            resValue "string", "app_name", "Weatherator debug"
+        }
+        qa {
+            initWith debug
+            applicationIdSuffix ".qa"
+            resValue "string", "app_name", "Weatherator QA"
+        }
+    }
+    productFlavors {
+        apiMocked {
+            dimension "mode"
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher_new",
+                    appIconRound: "@mipmap/ic_launcher_new_round"
+            ]
+        }
+        apiProduction { dimension "mode" }
+    }
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (variant.buildType.name == "qa" && names.contains("apiMocked")) {
+            setIgnore(true)
         }
     }
 }
